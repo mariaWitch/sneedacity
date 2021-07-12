@@ -586,16 +586,7 @@ OutContainer transform_container( InContainer &inContainer, Function &&fn )
  If a structure contains any members with large alignment, this base class may also allow it to work in
  macOS builds under current limitations of the C++17 standard implementation.
  */
-struct UTILITY_API alignas(
-#ifdef __WIN32__
-   std::hardware_destructive_interference_size
-#else
-   // That constant isn't defined for the other builds yet
-   64 /* ? */
-#endif
-)
-
-NonInterferingBase {
+struct alignas(64) NonInterferingBase {
    static void *operator new(std::size_t count, std::align_val_t al);
    static void operator delete(void *ptr, std::align_val_t al);
 
