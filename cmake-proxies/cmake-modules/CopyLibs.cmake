@@ -135,6 +135,14 @@ function( gather_libs src )
    set( VISITED ${VISITED} PARENT_SCOPE )
 endfunction()
 
+if( CMAKE_HOST_SYSTEM_NAME MATCHES "Windows" )
+    if( CMAKE_SIZEOF_VOID_P EQUAL 8 )
+        set( WXWIN "${CMAKE_BINARY_DIR}/../lib/vc_x64_dll")
+    else()
+        set( WXWIN "${CMAKE_BINARY_DIR}/../lib/vc_dll")
+    endif()
+endif()
+
 gather_libs( "${SRC}" )
 
 list( REMOVE_DUPLICATES postcmds )

@@ -5,7 +5,7 @@
 set( LIBRARIES
    lib-string-utils
    lib-strings
-   lib-utility
+   # lib-utility
 )
 
 foreach( LIBRARY ${LIBRARIES} )
